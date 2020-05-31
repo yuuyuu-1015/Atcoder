@@ -1,7 +1,6 @@
-const inpu = "3 0 1 1 1";
-const input = inpu.split(" ")
-    let N = +input.shift();
-    let A = input.map(x => +x);
+function main(input) {
+    const N = +input.shift();
+    const A = input.map(x => +x);
     let node = Array(N + 1);
     node[0] = 1;
 
@@ -13,16 +12,8 @@ const input = inpu.split(" ")
         }
     }
 
-    var sum  = function(arr) {
-        var sum = 0;
-        arr.forEach(function(elm) {
-            sum += elm;
-        });
-        return sum;
-    };
-
-    
     // console.log(sum(node));
+
     if(node[N] < A[N]){
         console.log(-1);
     }else if(node[N] === A[N]){
@@ -31,10 +22,10 @@ const input = inpu.split(" ")
         let nodemax = Array[N + 1];
         nodemax[N] = A[N];
         for(let d = N; d > 0; d--){
-            // console.log({ d, A, node, nodemax}, sum(node));
-            if(nodemax[d] < node[d]){
-                node[d] = nodemax[d]
-                nodemax[d - 1] = node[d] + A[d - 1]
-            }
+            console.log({ d, A, node, nodemax}, sum(node));
         }
     }
+
+
+}
+main(require('fs').readFileSync('/dev/stdin', 'utf8'));
